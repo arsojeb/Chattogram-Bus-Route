@@ -1,5 +1,8 @@
 {
   "name": "ctg-bus-route",
+   "allowScripts": {
+    "esbuild": true
+  },
   "private": true,
   "version": "1.0.0",
   "type": "module",
