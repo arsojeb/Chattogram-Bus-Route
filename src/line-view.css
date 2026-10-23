@@ -1,0 +1,48 @@
+/* Straight-line route view (P1 ── other stops ── P2) */
+.line-panel{margin:18px 22px 22px;border:1px solid #2a3d53;border-radius:13px;background:#0d192a;padding:22px 0 16px;position:relative;overflow:hidden}
+.line-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 22px}
+.line-head h3{font-size:20px;margin:6px 0 0;font-family:'Hind Siliguri',sans-serif}
+.line-play{display:inline-flex;align-items:center;gap:6px;border:1px solid #3d536a;border-radius:8px;padding:8px 11px;background:#1a2b40;color:#dbe5f1;font-size:11px;font-family:'Hind Siliguri',sans-serif}
+.line-play:hover{border-color:var(--route-color,var(--lime));color:var(--lime)}
+.line-scroll{overflow-x:auto;padding:6px 0 4px;scrollbar-color:#52677d #15243a;scrollbar-width:thin}
+.line-track{position:relative;height:250px;min-width:max(100%,calc(var(--n) * 54px));padding:0 80px}
+.line-inner{position:absolute;left:80px;right:80px;top:0;bottom:0}
+
+/* bracket "other stops" */
+.line-bracket{position:absolute;top:34px;height:62px}
+.line-bracket svg{width:100%;height:100%;overflow:visible}
+.line-bracket path{fill:none;stroke:var(--route-color);stroke-width:3;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.line-bracket-label{position:absolute;left:50%;top:-30px;transform:translateX(-50%);white-space:nowrap;font-family:'Hind Siliguri',sans-serif;font-size:12px;color:#dbe5f1;background:#15243a;border:1px solid #2f4259;padding:5px 10px;border-radius:99px}
+.line-bracket-label b{color:var(--route-color)}
+
+/* rail */
+.line-rail{position:absolute;left:0;right:0;top:140px;height:4px;margin-top:-2px;border-radius:4px;background:#2b4056;overflow:hidden}
+.line-progress{display:block;height:100%;background:var(--route-color);border-radius:4px;transition:width .6s var(--motion-ease,ease)}
+
+/* stops */
+.line-stop{position:absolute;top:142px;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center}
+.line-dot{width:20px;height:20px;border-radius:50%;border:3px solid var(--route-color);background:#0d192a;transition:background .3s,transform .3s,box-shadow .3s;cursor:default}
+.line-stop.passed .line-dot{background:var(--route-color)}
+.line-stop.active .line-dot{transform:scale(1.25);box-shadow:0 0 0 5px #0d192a,0 0 18px var(--route-color)}
+.line-stop.end .line-dot{width:30px;height:30px;border-width:4px}
+.line-stop.end .line-dot{background:var(--route-color)}
+.line-name{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);white-space:nowrap;font-family:'Hind Siliguri',sans-serif;font-size:11px;color:#f1f5fb;background:#1b2c40;border:1px solid #3a4f64;padding:4px 8px;border-radius:7px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:6}
+.line-stop:hover .line-name,.line-stop.active .line-name{opacity:1}
+.line-stop.active .line-name{border-color:var(--route-color)}
+.line-stop.end .line-name{display:none}
+.line-end-label{position:absolute;top:30px;left:50%;transform:translateX(-50%);text-align:center;font-family:'Hind Siliguri',sans-serif;width:120px}
+.line-end-label strong{display:block;font-size:28px;line-height:1;font-family:'Manrope',sans-serif;font-weight:800;color:var(--route-color)}
+.line-end-label span{display:block;margin-top:6px;font-size:12px;color:#e8eef6;line-height:1.5}
+
+/* moving bus */
+.line-bus{position:absolute;top:142px;z-index:5;width:34px;height:34px;transform:translate(-50%,-50%);display:grid;place-items:center;border-radius:10px;background:var(--route-color);color:#102039;box-shadow:0 0 16px var(--route-color);transition:left .9s var(--motion-ease,ease);pointer-events:none}
+
+/* chips */
+.line-chips{display:flex;flex-wrap:wrap;gap:6px;padding:6px 22px 4px;border-top:1px solid #26364d;margin-top:8px;padding-top:14px}
+.line-chip{font-family:'Hind Siliguri',sans-serif;font-size:11px;color:#9dabc0;border:1px solid #2b3d52;border-radius:7px;padding:5px 9px}
+.line-chip.active{color:var(--lime);border-color:var(--route-color);background:#a4ed641a}
+.line-chip em{font-style:normal;color:#6f8198;margin-right:5px;font-size:9px}
+
+@media(max-width:1100px){.line-panel{margin-left:14px;margin-right:14px}}
+@media(max-width:760px){.line-panel{margin:12px}.line-head,.line-chips{padding-left:14px;padding-right:14px}.line-track{padding:0 70px}.line-inner{left:70px;right:70px}}
+@media(prefers-reduced-motion:reduce){.line-bus,.line-progress{transition:none!important}}
